@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="shortcut icon" href="images/trees.ico">
+    <head>
+        <meta charset="utf-8">
+        <meta description="Created By The Boss">
+        <title>A Log in Screen!</title>
+        <link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+    </head>
+    <body>
+        <div class="mainsection">	
+            <div class="loginsection">
+                <div class="loginsectioninfo">
+                    <h4>Log in to The Oasis</h4>
+                </div>
+                <div class="btm-border"></div>
+                <div id="login_form"> 
+                    <form>
+                        <input type="email" name="email" placeholder="Email"/> <br>
+                        <input type="password" name="password" placeholder="Password"/>
+                    </form>
+                    <div class="btm-border2"></div>
+                    <div class="signupinfo">
+                        <span class="forgot"><a href="#">Forgot your password?</a></span> <br>
+                        <span class="signup"><a href="gallery.html">Sign up now</a></span>
+                    </div>
+                    <div class="submitbutton">
+                        <input id="login" type="submit" value="Log In">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script src="jquery.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#login").click(function(event) {
+            window.alert( "Thanks for visiting!" );
+        });
+        
+        // prepare the data
+        var source = {
+            datatype: "json",
+            datafields: [
+                { name: 'CompanyName' },
+                { name: 'ContactName' },
+                { name: 'ContactTitle' },
+                { name: 'Address' },
+                { name: 'City' },
+            ],
+            url: 'backend.php'
+        };
+        
+        var dataAdapter = new $.jqx.dataAdapter(source);
+        
+        $("#dropdownlist").jqxDropDownList(
+        {
+            source: dataAdapter,
+            theme: 'classic',
+            width: 200,
+            height: 25,
+            selectedIndex: 0,
+            displayMember: 'CompanyName',
+            valueMember: 'ContactName'
+        });
+    });
+</script>
